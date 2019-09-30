@@ -40,7 +40,7 @@ def get_mean_bc(env, policy, tslimit, num_rollouts=1):
 
 def setup_env(exp):
     import gym
-    gym.undo_logger_setup()
+    import roboschool
     config = Config(**exp['config'])
     env = gym.make(exp['env_id'])
     if exp['policy']['type'] == "ESAtariPolicy":

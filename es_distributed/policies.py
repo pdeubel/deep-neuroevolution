@@ -281,7 +281,10 @@ class MujocoPolicy(Policy):
             if save_obs:
                 obs.append(ob)
             ob, rew, done, _ = env.step(ac)
-            x_traj[t], y_traj[t], _ = self._get_pos(env.unwrapped.model)
+            #x_traj[t], y_traj[t], _ = self._get_pos(env.unwrapped.model)
+            pos = env.body_xyz
+            x_traj[t] = pos[0]
+            y_traj[t] = pos[1]
             rews.append(rew)
             t += 1
             if render:
@@ -289,7 +292,11 @@ class MujocoPolicy(Policy):
             if done:
                 break
 
-        x_pos, y_pos, _ = self._get_pos(env.unwrapped.model)
+        #x_pos, y_pos, _ = self._get_pos(env.unwrapped.model)
+        pos = env.body_xyz
+        x_pos = pos[0]
+        y_pos = pos[1]
+
         rews = np.array(rews, dtype=np.float32)
         x_traj[t:] = x_traj[t-1]
         y_traj[t:] = y_traj[t-1]

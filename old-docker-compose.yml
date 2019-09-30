@@ -1,6 +1,6 @@
 version: '3'
 
-# Upon 'docker-compose up' builds one image from Dockerfile and starts 
+# Upon 'docker-compose up' builds one image from OLD-Dockerfile and starts
 # a container with interactive session.   
 services:
     deepneuro:
